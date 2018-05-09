@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block breadcrumb %}
+<!--
+<ul class="row">
+  <li class="breadcrumb-item"><a href="#">Boards</a></li>
+  <li class="breadcrumb-item"><a href="#">nini</a></li>
+  <li class="breadcrumb-item active">New topic</li>
+</ul>
+-->
+{% endblock %}
+
+{% block content %}
+<div class="row my-4" >
+    <div class="col-md-2">
+	       <h3>Producers</h3>
+	       {% for producer in producers %}
+	        <li><a href="{% url 'producerbeats' producer.pk %}"> {{ producer }}</a></li>
+	       {% endfor %}
+	       <p><h4><a href="{% url 'allproducers' %}">List all</a></h4></p>
+	</div>
+    <div class="col-md-8">
+	       <h3>Beats</h3>
+	       <!--<p>List of all the producers</p>-->
+	        <table class="table">
+			     <div class="breadcrumb-item">
+			      <thead class="thead-inverse">
+			      <tr>
+			        <th>Name</th>
+			        <th>Genre</th>
+			        <th>Playback</th>
+			        <th>Purchase</th>
+			      </tr>
+			      </thead>
+			     </div>
+			      <tbody>
+			        {% for beat in beats %}
+			          <tr>
+			            <td class="align-middle">{{ beat.name }}</td>
+			            <td class="align-middle">{{ beat.genre }}</td>
+			            <td class="align-middle">
+			            	<audio controls>
+   								 <source src="{{ beat.playback.url }}" type="audio/mpeg">
+   								 	<p>Your browser does not support the audio element.</p>
+							</audio>
+						</td>
+			            <td class="align-middle"><a  href="#">Add to cart</a></td>
+			          </tr>
+			        {% endfor %}
+			      </tbody>
+			</table>
+			<p><a href="{% url 'allbeats' %}">See all</a></p>
+	</div>
+	<div class="col-md-2">
+	       <!--<h3>Comments</h3>-->
+	       <p><h5>Drop a comment</h5>  <a  href="#">See all</a></p>
+	</div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block breadcrumb %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row my-4" >
+	<div class="col-md-2" style="background-color: cyan;">
+	       <h3>My Profile</h3>
+	       <p></p>
+	</div>
+    <div class="col-md-8" style="background-color: gray;">
+	       <h3>Beats</h3>
+	       <!--<p>List of all the producers</p>-->
+	        <table class="table">
+			     <div class="breadcrumb-item">
+			      <thead class="thead-inverse">
+			      <tr>
+			        <th>Name</th>
+			        <th>Genre</th>
+			        <th>Playback</th>
+			        <th>Purchase</th>
+			      </tr>
+			      </thead>
+			     </div>
+			      <tbody>
+			        {% for beat in beats %}
+			          <tr>
+			            <td class="align-middle">{{ beat.name }}</td>
+			            <td class="align-middle">{{ beat.genre }}</td>
+			            <td class="align-middle">
+			            	<audio controls>
+   								 <source src="{{ beat.playback.url }}" type="audio/mpeg">
+   								 	<p>Your browser does not support the audio element.</p>
+							</audio>
+						</td>
+			            <td class="align-middle"><a  href="#">Add to cart</a></td>
+			          </tr>
+			        {% endfor %}
+			      </tbody>
+			</table>
+		</div>
+	<div class="col-md-2"  style="background-color: cyan;">
+	       <h3>Comments</h3>
+	       <p>Say something about my production  <a  href="#">See other comments</a></p>
+	</div>
+</div>
+{% endblock %}
