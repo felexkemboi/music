@@ -156,12 +156,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static")),
 """
+"""
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
  
 STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'musicstore/static'),
 )
+"""
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'static' # Important for Heroku
+STATIC_URL = '/static/'
 
 """
 SOCIALACCOUNT_QUERY_EMAIL = True
