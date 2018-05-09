@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -162,7 +163,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATIC_ROOT = 'static' # Important for Heroku
 #STATIC_URL = '/static/'
 
-
+"""
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
  
@@ -170,6 +171,7 @@ STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'static'),
 )
 
+"""
 """
 SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
@@ -179,6 +181,13 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 """
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 MEDIA_URL='/media/'
 
